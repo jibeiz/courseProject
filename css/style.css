@@ -451,3 +451,62 @@ input[type=radio]:checked + label {
 .showOrhide{
 	height: 70px;
 }
+
+#headerAdmin{
+	padding: 10px 30px 10px 30px;
+	margin: 10px 30px 10px 30px;
+	position: relative;
+	display: block;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+		text-align: left;
+
+}
+.row1col1{
+  	width: 18%;
+		height: 400px;
+		margin-left: 2%;
+	  float: left;
+		/*background-color: red;*/
+}
+
+.row1col2 {
+  	width: 60%;
+		height: 400px;
+		float: left;
+		background-color: grey;
+}
+
+.row1col3{
+		width: 18%;
+	  height: 400px;
+		margin-right: 2%;
+    float: left;
+		/*background-color: yellow;*/
+}
+.row2col1{
+		width: 18%;
+		height: 500px;
+		margin-left: 2%;
+	  float: left;
+		background-color: grey;
+}
+
+.row2col2 {
+  	width: 60%;
+				height: 500px;
+		float: left;
+		/*background-color: orange;*/
+}
+.row2col3{
+		width: 18%;
+		height: 500px;
+		margin-right: 2%;
+    float: left;
+		background-color: grey;
+}
+th,td{
+	text-align: right;
+}
+a{
+	text-decoration: underline;
+}
