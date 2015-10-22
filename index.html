@@ -11,6 +11,19 @@
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+    <script type="text/javascript">
+    function userTypecheck(){
+if(document.getElementById('usergroupsignup1').checked){
+  document.getElementById('dispHostAdd').style.display = 'none';
+  document.getElementById('dispStuID').style.display = 'block';
+}id="stuID"
+if(document.getElementById('usergroupsignup2').checked){
+  document.getElementById('dispStuID').style.display = 'none';
+  document.getElementById('dispHostAdd').style.display = 'block';
+}
+}
+
+    </script>
     </head>
     <body>
         <div class="container">
@@ -82,18 +95,29 @@
                                 <p>
                                     <label for="usergroupsignup" class="ugroup" >You want to become a?</label>
                                     <div class="ugroupsign" >
-                                    <input type="radio" name="usergroupsignup" id="usergroupsignup1" class="usergroupsign" value="1" />
-                                    <label for="usergroupsignup1">Mentor</label>
-                                    <input type="radio" name="usergroupsignup" id="usergroupsignup2" class="usergroupsign" value="2" />
-                                    <label for="usergroupsignup2">Host Family</label>
+                                    <input onclick="javascript:userTypecheck();" type="radio" name="usergroupsignup" class="btn1" id="usergroupsignup1" class="usergroupsign" value="1" />
+                                    <label onclick="javascript:userTypecheck();" for="usergroupsignup1" class="btn1" >Mentor</label>
+                                    <input onclick="javascript:userTypecheck();" type="radio" name="usergroupsignup" class="btn1" id="usergroupsignup2" class="usergroupsign" value="2" />
+                                    <label onclick="javascript:userTypecheck();" for="usergroupsignup2" class="btn2" >Host Family</label>
                                     </div>
 
                                 </p>
+                                <div class="showOrhide">
+                                <p id="dispStuID" style="display:block;">
+                                    <label  id="stuID1" for="stuID" class="stuID" data-icon="u" > Your Student ID</label>
+                                    <input  id="stuID" name="stuID"  type="text" placeholder="aa9999"/>
+                                </p>
+                                <p id="dispHostAdd" style="display:none;">
+                                    <label  id="hostAdd1" for="hostAdd" class="hostAdd" data-icon="a" > Your Address</label>
+                                    <input  id="hostAdd" name="hostAdd"  type="text" placeholder="1xx Elizabeth Ave"/>
+                                </p>
+                              </div>
                                 <p>
                                     <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
                                     <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
 
                                 </p>
+
                                 <p>
                                     <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
                                     <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/>
