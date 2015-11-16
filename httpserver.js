@@ -2,6 +2,48 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 var path = require('path');
+var app = require('express')();
+var mysql      = require('mysql');
+var bodyParser =require('body-parser');
+
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'admini',
+  database : 'nodesql'
+});
+connection.connect(function(err){
+if(!err) {
+    console.log("Database is connected ... \n\n");
+} else {
+    console.log("Error connecting database ... \n\n");
+}
+});
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json()); // Body parser use JSON data
+
+
+
+
+app.post('/regiser',function(req,res){
+    var email = req.body.email;
+    var pass = req.body.password;
+    var data = {
+        "Data":""
+    };
+    connection.query("SELECT * from login WHERE email=? and password=? LIMIT 1",[email,pass],function(err, rows, fields){
+        if(rows.length != 0){
+            data["Data"] = "Successfully logged in..";
+            res.json(data);
+        }else{
+            data["Data"] = "Email or password is incorrect.";
+            res.json(data);
+        }
+    });
+});
+
 
 //config
 var config = {
@@ -17,6 +59,36 @@ console.log("Server has started. port:"+config.port);
 
 //router URL
 function processRequestRoute(request, response) {
+  switch (request.method) {
+    case "GET":
+      break;
+    case "POST":
+      if(request.url ==="/login.html"){
+        app.get('/login',function(req,res){
+            var username = req.body.username;
+            var pass = req.body.password;
+            var data = {
+                "Data":"test123"
+            };
+            connection.query("SSELECT * from registermentor mentor_name=? and password=? LIMIT 1",[username,pass],function(err, rows, fields){
+                if(rows.length != 0){
+                    data["Data"] = "Successfully logged in..";
+                    res.json(data);
+
+                }else{
+                    data["Data"] = "Email or password is incorrect.";
+                    res.json(data);
+                }
+            });
+        });
+
+      }else{
+      
+      }
+      break;
+    default:
+
+  }
     var pathname = url.parse(request.url).pathname;
     if (pathname === '/') {
         pathname = "/index.html"; //default page
